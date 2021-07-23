@@ -11,9 +11,9 @@ import dz.ibnrochd.master14.model.Traitement;
 @Repository
 public interface TraitementRepository extends JpaRepository<Traitement,Integer>{
 	
-	Traitement findByLigneConsultations(LigneConsultation ligneConsultations);
+	//Traitement findByLigneConsultations(LigneConsultation ligneConsultations);
 	
-	List<Traitement> findByAllTraitementByLigneConsultations(LigneConsultation ligneConsultations);
+	List<Traitement> findByLigneConsultations(LigneConsultation ligneConsultations);
 	
 	Traitement findById(int id);
 	

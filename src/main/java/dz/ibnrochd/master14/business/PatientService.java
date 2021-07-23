@@ -37,7 +37,7 @@ public class PatientService implements IPatientService{
 	@Override
 	public void updatePatient(int id, Patient patient) {
 		// TODO Auto-generated method stub
-		Patient p=patientRepository.findByID(id);
+		Patient p=patientRepository.findById(id);
 		p.setAdresse(patient.getAdresse());
 		p.setConsultations(patient.getConsultations());
 		p.setDateNaissance(patient.getDateNaissance());

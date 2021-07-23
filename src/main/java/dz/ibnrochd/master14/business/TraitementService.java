@@ -24,7 +24,7 @@ public class TraitementService implements ITraitementService{
 	@Override
 	public List<Traitement> listDesConsultationDuneLigne(LigneConsultation ligneConsultation) {
 		// TODO Auto-generated method stub
-		return traitementRepository.findByAllTraitementByLigneConsultations(ligneConsultation);
+		return traitementRepository.findByLigneConsultations(ligneConsultation);
 	}
 
 	@Override
