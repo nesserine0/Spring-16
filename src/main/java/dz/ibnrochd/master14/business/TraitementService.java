@@ -40,7 +40,7 @@ public class TraitementService implements ITraitementService{
 	}
 
 	@Override
-	public void updateTraitement(int id, Traitement traitement) {
+	public void updateTraitement(Long id, Traitement traitement) {
 		// TODO Auto-generated method stub
 		Traitement t=traitementRepository.findById(id);
 		t.setLigneConsultations(traitement.getLigneConsultations());

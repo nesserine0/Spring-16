@@ -22,7 +22,7 @@ public class RendezVous implements Serializable {
 
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
 
     @Column(name = "date_rdv", nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
@@ -38,7 +38,7 @@ public class RendezVous implements Serializable {
 		
 	}
 
-	public RendezVous(int id, Date dateRdv, Patient patient) {
+	public RendezVous(Long id, Date dateRdv, Patient patient) {
 		super();
 		this.id = id;
 		this.dateRdv = dateRdv;
@@ -47,11 +47,11 @@ public class RendezVous implements Serializable {
 
 	///////////////////////////////////////////////
 	
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

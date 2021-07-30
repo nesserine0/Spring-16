@@ -1,6 +1,7 @@
 package dz.ibnrochd.master14;
 
 import java.util.Date;
+import java.util.List;
 import java.text.DateFormat;
 import java.util.Locale;
 
@@ -15,6 +16,7 @@ import dz.ibnrochd.master14.dao.PatientRepository;
 import dz.ibnrochd.master14.dao.TraitementRepository;
 import dz.ibnrochd.master14.model.Consultation;
 import dz.ibnrochd.master14.model.Patient;
+import dz.ibnrochd.master14.model.Traitement;
 
 @SpringBootApplication
 public class Sb002Application implements CommandLineRunner {
@@ -41,8 +43,8 @@ public class Sb002Application implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		
-		//ACTIVITY 09
-		/*// TODO : récupérer la liste de tous les patients puis afficher leurs noms
+		/*//ACTIVITY 09
+		// TODO : récupérer la liste de tous les patients puis afficher leurs noms
 		
 		System.out.println("\n\nList des patients : \n");
 		 patientRepository.findAll().forEach(pat->System.out.print(pat.getNom()+"\n"));
@@ -61,13 +63,21 @@ public class Sb002Application implements CommandLineRunner {
 		 
 		// TODO : rechercher la consultation ayant id=3 
         System.out.println("\n\nConsultation ayant id = 3 : ");
-		 Consultation c=consultationRepository.findById(3);
+        Long id =(long) 3;
+		 Consultation c=consultationRepository.findById(id);
 		 System.out.println(c.toStringRewrited());
 
 		// TODO : parcourir les lignes de la consultation trouvée et afficher les noms des médicaments
 		  System.out.println("\n\nLes noms des médicaments des ligne de la consultation 3 : ");
 		 ligneConsultationRepository.findByConsultation(c)
-		 .forEach(ligne->System.out.println( traitementRepository.findByLigneConsultations(ligne).getNom()));*/
+		 .forEach(ligne->{
+			List<Traitement> traitement=traitementRepository.findByLigneConsultations(ligne);
+			for(Traitement t : traitement){
+				 System.out.println(t.getNom() );
+			}
+			
+		 });
+		 */
 		
 	}
 

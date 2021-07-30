@@ -19,5 +19,5 @@ public interface ITraitementService {
 	
 	void deleteTraitement(Traitement traitement);
 	
-	void updateTraitement(int id , Traitement traitement);
+	void updateTraitement(Long id , Traitement traitement);
 }

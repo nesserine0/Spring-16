@@ -39,7 +39,7 @@ public class ConsultationService implements IConsultationService{
 	}
 
 	@Override
-	public void updateConsultation(int id, Consultation consultation) {
+	public void updateConsultation(Long id, Consultation consultation) {
 		// TODO Auto-generated method stub
 		Consultation c=consultationRepository.findById(id);
 		c.setDate_Consultation(consultation.getDate_Consultation());

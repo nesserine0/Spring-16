@@ -17,5 +17,5 @@ public interface IConsultationService {
 	
 	void deleteConsultation(Consultation consultation);
 	
-	void updateConsultation(int id , Consultation consultation);
+	void updateConsultation(Long id , Consultation consultation);
 }

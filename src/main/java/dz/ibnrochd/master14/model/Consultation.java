@@ -23,7 +23,7 @@ public class Consultation implements Serializable {
 	
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	private Long id;
 	
 	@Column(name = "motif", length = 255)
 	private String motif;
@@ -47,7 +47,7 @@ public class Consultation implements Serializable {
 
 
 
-	public Consultation(int id, String motif, Date date_Consultation, Patient patient) {
+	public Consultation(Long id, String motif, Date date_Consultation, Patient patient) {
 		super();
 		this.id = id;
 		this.motif = motif;
@@ -67,13 +67,13 @@ public class Consultation implements Serializable {
 
 
 
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
 
 
-	public void setId(int id_consultation) {
+	public void setId(Long id_consultation) {
 		this.id = id_consultation;
 	}
 

@@ -13,7 +13,7 @@ import dz.ibnrochd.master14.model.Patient;
 @Repository
 public interface ConsultationRepository extends JpaRepository<Consultation,Integer>{
 	
-	Consultation findById(int id);
+	Consultation findById(Long id);
 
 	 List <Consultation> findAll() ;
 	 

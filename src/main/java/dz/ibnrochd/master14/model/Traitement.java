@@ -21,7 +21,7 @@ public class Traitement implements Serializable {
 	
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	private Long id;
 	
 	@Column(name = "nom", length = 255)
 	private String nom;
@@ -36,13 +36,13 @@ public class Traitement implements Serializable {
 	}
 
 
-	public Traitement(int id, String nom) {
+	public Traitement(Long id, String nom) {
 		super();
 		this.id = id;
 		this.nom = nom;
 	}
 
-	public Traitement(int id, String nom, List<LigneConsultation> ligneConsultations) {
+	public Traitement(Long id, String nom, List<LigneConsultation> ligneConsultations) {
 		super();
 		this.id = id;
 		this.nom = nom;
@@ -59,12 +59,12 @@ public class Traitement implements Serializable {
 	}
 
 
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
 
-	public void setId(int id_traitement) {
+	public void setId(Long id_traitement) {
 		this.id = id_traitement;
 	}
 

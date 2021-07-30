@@ -23,7 +23,7 @@ public class Patient implements Serializable {
 
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
 
     @Column(name = "nom", nullable = false, length = 255)
     private String nom;
@@ -66,7 +66,7 @@ public class Patient implements Serializable {
 		this.adresse = adresse;
 	}
     
-	public Patient(int id, String nom, String prenom, String sexe, Date dateNaissance, String numeroTelephone,
+	public Patient(Long id, String nom, String prenom, String sexe, Date dateNaissance, String numeroTelephone,
 			String adresse) {
 		this.id = id;
 		this.nom = nom;
@@ -79,11 +79,11 @@ public class Patient implements Serializable {
 	
 	//////////////////////////////////////////////////////
 
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

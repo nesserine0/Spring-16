@@ -20,7 +20,7 @@ public class LigneConsultation implements Serializable {
 	
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int Id;
+	private Long Id;
 	
 	@ManyToOne()
 	@JoinColumn(name = "id_consultation", nullable = false)
@@ -46,7 +46,7 @@ public class LigneConsultation implements Serializable {
 	//////////////////////////////////////////////
 	
 	
-	public LigneConsultation(int id, Consultation consultation, Traitement traitement, String posologie,
+	public LigneConsultation(Long id, Consultation consultation, Traitement traitement, String posologie,
 			String unite_Temps, String quantite) {
 		super();
 		Id = id;
@@ -68,14 +68,14 @@ public class LigneConsultation implements Serializable {
 
 	///////////////////////////////////////////////////
 
-	public int getId() {
+	public Long getId() {
 		return Id;
 	}
 
 
 
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		Id = id;
 	}
 

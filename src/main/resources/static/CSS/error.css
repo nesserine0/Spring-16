@@ -1,0 +1,49 @@
+@charset "ISO-8859-1";
+
+
+body
+ {
+ background-color:#F8F5F9;
+ }
+ 
+ 
+ 
+img {
+	margin-top:70px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 200px;
+  height:200px;
+}
+
+
+h1,h2,a{
+	 text-align: center;
+	   font-family: "Lucida Console", "Courier New", monospace;
+}
+
+h1{
+	 font-size: 50px;
+	 font-weight: bold;
+	   color:#2E0138;
+}
+
+h2{
+	
+	 font-size: 30px;
+	 font-weight: lighter;
+	   color: #956397;
+}
+
+a{
+	  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 500px;
+  height:20px;
+	margin-top:5px;
+	 font-size: 14px;
+	  font-weight: lighter;
+	    color: #956397;
+}

@@ -13,6 +13,8 @@ public interface IPatientService {
 	
 	void deletePatient(Patient patient);
 	
-	void updatePatient(int id , Patient patient);
+	void deletePatientByid(Long id);
+	
+	void updatePatient(Long id , Patient patient);
 	
 }
