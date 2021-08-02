@@ -8,18 +8,23 @@
 </head>
 <body>
 
+<script src="https://kit.fontawesome.com/0cb2cf5836.js" crossorigin="anonymous"></script>
+
 <div class="cabinet"> 
         <h4>Cabinet de Nesserine Touadi </h4>
     </div>
-<h3> <ion-icon name="person"></ion-icon> Liste des Patients  </h3>
+<h3> <i class="fas fa-user-injured"></i> Liste des Patients  </h3>
+
+ 
+    <h5><i class="fas fa-user-plus"></i>  <a href="">Creer un nouveau patient</a> </h5>
 
  <table>
  
- <tr> <th>Id  </th> <th>Nom  </th> <th>Prenom </th>  <th>Date Naissance </th> <th>Num Tel</th> <th>Adress </th>  <th colspan="2">Action </th></tr>
+ <tr> <th>Nom  </th> <th>Prenom </th>  <th>Date Naissance </th> <th>Num Tel</th> <th>Adress </th>  <th colspan="2">Action </th></tr>
 
  
  <tr th:each ="t : ${liste}">
-     <td  th:utext="${t.id}">  </td>
+   
      <td th:utext="${t.nom}"></td>
      <td  th:utext="${t.prenom}">  </td>
      <td  th:utext="${t.dateNaissance}">  </td>
@@ -27,32 +32,16 @@
      <td  th:utext="${t.adresse}">  </td>
     
      
-    <td>   
-     
-     <button class="btn" type="button">
-        
-      
-         <ion-icon name="create-outline"></ion-icon>        
-     </button> 
-        </td>
-        <td>
-        
-        <form th:action="@{'delete/'+${t.id}}" method="post">
+    <td><button class="btn" type="button"><i class="fas fa-user-edit"></i></button></td>
+    
+        <td><form th:action="@{'delete/'+${t.id}}" method="post">
                    
-        <button class="btn" type="submit">
-        
-        
-        <ion-icon name="trash"></ion-icon>
-        
-     </button>  
+        <button class="btn" type="submit"> <i class="fas fa-user-minus"></i> </button>  
      
-      </form>              
-     </td>
+      </form></td>
  </tr>
  
  </table>
  
- <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </body>
 </html>

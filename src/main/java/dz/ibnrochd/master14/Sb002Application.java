@@ -64,8 +64,8 @@ public class Sb002Application implements CommandLineRunner {
 		// TODO : rechercher la consultation ayant id=3 
         System.out.println("\n\nConsultation ayant id = 3 : ");
         Long id =(long) 3;
-		 Consultation c=consultationRepository.findById(id);
-		 System.out.println(c.toStringRewrited());
+		Consultation c=consultationRepository.findById(id);
+		System.out.println(c.toStringRewrited());
 
 		// TODO : parcourir les lignes de la consultation trouvée et afficher les noms des médicaments
 		  System.out.println("\n\nLes noms des médicaments des ligne de la consultation 3 : ");

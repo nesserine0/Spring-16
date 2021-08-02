@@ -68,14 +68,14 @@ public class PatientService implements IPatientService{
 		
 	if (id!=null) {
 		 Patient patient;
-		System.out.print("the passed id is "+id);
+		System.out.print("the passed id is "+id+"\n");
 		
 		Optional <Patient> optionalEntity = patientRepository.findById(id);
 		if (optionalEntity.isPresent()) {
 			System.out.print("patient is present" );
 		    patient = optionalEntity.get();
 		    
-			System.out.print("patient id is "+patient.getId() );
+			System.out.print("patient id is "+patient.getNom() );
 			
 		    patientRepository.delete(patient);	
 		}
