@@ -78,21 +78,39 @@ th{
     color: white;
 }
 
-button{
-	 width:30px;
-    height:30px;
+button {
     display:block;
-   
-    line-height:30px;
-    border: 2px solid #f5f5f5;
+    width:40px;
+    height:40px;
+    line-height:40px;
+    border: 2px solid #ffffff;
     border-radius: 50%;
     color:#f5f5f5;
-    background: #FFC300 ;
+  
     box-shadow: 0px 0px 3px gray;
     font-size:20px;
-    font-weight:bold; 
+    font-weight:bold;
+
 }
 
-button:hover {
+#delete{
+	background:#ff0000;
+}
+
+#edit{
+	  background: #FFC300;
+}
+#edit:hover {
     background: #e49d1a;
+}
+#delete:hover {
+    background: #990000;
+}
+
+
+#consult{
+	  background: #3EAF60;
+}
+#consult:hover {
+    background: #318249;
 }

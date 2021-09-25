@@ -61,7 +61,7 @@ public class Patient implements Serializable {
 		this.nom = nom;
 		this.prenom = prenom;
 		this.sexe = sexe;
-		this.dateNaissance = dateNaissance;
+		this.dateNaissance =  dateNaissance;
 		this.numeroTelephone = numeroTelephone;
 		this.adresse = adresse;
 	}
@@ -72,7 +72,7 @@ public class Patient implements Serializable {
 		this.nom = nom;
 		this.prenom = prenom;
 		this.sexe = sexe;
-		this.dateNaissance = dateNaissance;
+		this.dateNaissance =  dateNaissance;
 		this.numeroTelephone = numeroTelephone;
 		this.adresse = adresse;
 	}

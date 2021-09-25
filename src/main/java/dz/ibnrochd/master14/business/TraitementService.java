@@ -1,11 +1,14 @@
 package dz.ibnrochd.master14.business;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import dz.ibnrochd.master14.dao.LigneConsultationRepository;
 import dz.ibnrochd.master14.dao.TraitementRepository;
+import dz.ibnrochd.master14.model.Consultation;
 import dz.ibnrochd.master14.model.LigneConsultation;
 import dz.ibnrochd.master14.model.Traitement;
 
@@ -14,6 +17,8 @@ public class TraitementService implements ITraitementService{
 
 	@Autowired
 	TraitementRepository traitementRepository;
+	@Autowired
+	LigneConsultationRepository ligneConsultationRepository;
 	
 	@Override
 	public List<Traitement> listDesTraitement() {
@@ -46,6 +51,24 @@ public class TraitementService implements ITraitementService{
 		t.setLigneConsultations(traitement.getLigneConsultations());
 		t.setNom(traitement.getNom());
 		traitementRepository.save(t);
+	}
+
+	@Override
+	public List<Traitement> listDesConsultationDuneConsultation(Consultation consultation) {
+		// TODO Auto-generated method stub
+		
+		List<Traitement> traitement=new ArrayList<>();
+		 ligneConsultationRepository.findByConsultation(consultation)
+		 .forEach(ligne->{
+			 
+			traitement.addAll(traitementRepository.findByLigneConsultations(ligne));
+			
+		 });
+				
+			 
+			
+		return traitement;
+		
 	}
 
 }

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="UTF-8">
+<title>List des Consultation</title>
+
+<link rel="stylesheet" type=" text/css" th:href="@{/css/style.css}"/>
+
+
+</head>
+<body>
+
+    <div class="cabinet"> 
+        <h4>Cabinet de Nesserine Touadi </h4>
+    </div>
+<h3> <i class="fas fa-sticky-note"></i> Liste des Consultation </h3>
+   
+
+ <table>
+ 
+ 
+ 
+ <tr> <th>Date </th> <th>Motif </th>  <th>Traitement </th> </tr> 
+ 
+ 
+ <tr th:each ="t : ${listeConsultations}">
+   
+     <td th:utext="${t.Date_Consultation}"></td>
+     <td  th:utext="${t.motif}">  </td>
+   
+   
+ </tr>
+ 
+ </table>
+ 
+ <script src="https://kit.fontawesome.com/0cb2cf5836.js" crossorigin="anonymous"></script>
+</body>
+</html>

@@ -8,7 +8,7 @@
 </head>
 <body>
 
-<script src="https://kit.fontawesome.com/0cb2cf5836.js" crossorigin="anonymous"></script>
+
 
 <div class="cabinet"> 
         <h4>Cabinet de Nesserine Touadi </h4>
@@ -16,11 +16,11 @@
 <h3> <i class="fas fa-user-injured"></i> Liste des Patients  </h3>
 
  
-    <h5><i class="fas fa-user-plus"></i>  <a href="">Creer un nouveau patient</a> </h5>
+    <h5><i class="fas fa-user-plus"></i>  <a href="CreatPatient">Creer un nouveau patient</a> </h5>
 
  <table>
  
- <tr> <th>Nom  </th> <th>Prenom </th>  <th>Date Naissance </th> <th>Num Tel</th> <th>Adress </th>  <th colspan="2">Action </th></tr>
+ <tr> <th>Nom  </th> <th>Prenom </th>  <th>Date Naissance </th> <th>Num Tel</th> <th>Adress </th> <th>Consulter </th> <th colspan="2">Action </th> </tr>
 
  
  <tr th:each ="t : ${liste}">
@@ -31,17 +31,24 @@
      <td  th:utext="${t.numeroTelephone}">  </td>
      <td  th:utext="${t.adresse}">  </td>
     
+      <td><form th:action="@{'ConsultationPatient/'+${t.id}}" method="get">
+    <button class="btn"  type="submit" id="consult"><i class="fas fa-sticky-note"></i></button>
+     </form></td>
      
-    <td><button class="btn" type="button"><i class="fas fa-user-edit"></i></button></td>
+     
+    <td><form th:action="@{'UpdatePatient/'+${t.id}}" method="get">
+    <button class="btn"  type="submit" id="edit"><i class="fas fa-user-edit"></i></button>
+     </form></td>
     
         <td><form th:action="@{'delete/'+${t.id}}" method="post">
                    
-        <button class="btn" type="submit"> <i class="fas fa-user-minus"></i> </button>  
+        <button class="btn" type="submit" id="delete"> <i class="fas fa-user-minus"></i> </button>  
      
       </form></td>
  </tr>
  
  </table>
  
+ <script src="https://kit.fontawesome.com/0cb2cf5836.js" crossorigin="anonymous"></script>
 </body>
 </html>

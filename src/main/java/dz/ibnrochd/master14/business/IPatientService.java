@@ -17,4 +17,8 @@ public interface IPatientService {
 	
 	void updatePatient(Long id , Patient patient);
 	
+
+	
+	Patient getPatient(Long id);
+	
 }

@@ -88,4 +88,19 @@ public class PatientService implements IPatientService{
 		
 	}
 
+	@Override
+	public Patient getPatient(Long id) {
+		// TODO Auto-generated method stub
+		
+		 Patient patient=null;
+		 
+			Optional <Patient> optionalEntity = patientRepository.findById(id);
+			if (optionalEntity.isPresent()) {
+				 patient = optionalEntity.get();
+			}
+		return patient;
+	}
+
+
+
 }
