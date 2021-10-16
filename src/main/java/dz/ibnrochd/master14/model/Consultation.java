@@ -1,7 +1,9 @@
 package dz.ibnrochd.master14.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,9 +12,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(schema = "cabinet", name = "consultation")
@@ -36,6 +41,9 @@ public class Consultation implements Serializable {
 	@JoinColumn(name = "id_patient", nullable = false)
 	private Patient patient;
 
+	@OneToMany(mappedBy = "consultation")
+	@JsonIgnore
+    private List<LigneConsultation> ligneConsultations = new ArrayList<>();
 
 	
 	//////////////////////////////////////////
@@ -105,6 +113,20 @@ public class Consultation implements Serializable {
 
 	public void setPatient(Patient patient) {
 		this.patient = patient;
+	}
+
+	
+	
+
+
+	public List<LigneConsultation> getLigneConsultations() {
+		return ligneConsultations;
+	}
+
+
+
+	public void setLigneConsultations(List<LigneConsultation> ligneConsultations) {
+		this.ligneConsultations = ligneConsultations;
 	}
 
 

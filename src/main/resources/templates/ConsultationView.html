@@ -4,7 +4,7 @@
 
 <head>
 <meta charset="UTF-8">
-<title>List des Consultation</title>
+<title th:text="#{TitreHeadConsultation}">List des Consultation</title>
 
 <link rel="stylesheet" type=" text/css" th:href="@{/css/style.css}"/>
 
@@ -12,23 +12,31 @@
 </head>
 <body>
 
+      
     <div class="cabinet"> 
-        <h4>Cabinet de Nesserine Touadi </h4>
+        <h4 th:text="#{Titre}"> </h4>
     </div>
-<h3> <i class="fas fa-sticky-note"></i> Liste des Consultation </h3>
+    
+<h3 th:text="#{TitreConsultation}"> <i class="fas fa-sticky-note"></i> Liste des Consultation </h3>
    
 
  <table>
  
  
  
- <tr> <th>Date </th> <th>Motif </th>  <th>Traitement </th> </tr> 
+ <tr> <th th:text="#{Date}">Date </th> <th th:text="#{Motif}">Motif </th>  <th th:text="#{Traitement}">Traitement </th> </tr> 
  
  
  <tr th:each ="t : ${listeConsultations}">
    
      <td th:utext="${t.Date_Consultation}"></td>
      <td  th:utext="${t.motif}">  </td>
+     <td> 
+            <ul >
+               <li th:each ="l: ${t.ligneConsultations}">      <span  th:utext="${l.traitement.nom}">  </span>            </li>
+           </ul>
+           
+     </td>
    
    
  </tr>

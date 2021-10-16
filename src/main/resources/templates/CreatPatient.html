@@ -3,47 +3,57 @@
 <head>
 <meta charset="ISO-8859-1">
 
-<title>Nouveau Patient</title>
+<title  th:text="#{TitreHeadAdd}">Ajouter Patient</title>
 <link rel="stylesheet" type=" text/css" th:href="@{/css/creatpatient.css}"/>
 </head>
 <body>
+
+
+      
     <div class="cabinet"> 
-        <h4>Cabinet de Nesserine Touadi </h4>
+        <h4 th:text="#{Titre}"> </h4>
     </div>
     <center>
 <form th:action="@{/ajouterPatient}" th:object="${patient}" method="post">
+
     <div class="container">
-      <h1>Creation d'un nouveau patient</h1>
-      <p>Veuillez remplir les informations de patient</p>
+      <h1 th:text="#{TitreCreation}">Creation d'un nouveau patient</h1>
+      <p th:text="#{parCreate}">Veuillez remplir les informations de patient</p>
+      
       <hr>
   
-      <label for="nom"><b>Nom : </b></label>
+      <label for="nom"><b th:text="#{LabelNom}">Nom : </b></label>
       <input type="text" placeholder="Nom ..." name="nom" required th:field="*{nom}">
-  <br>
-      <label for="prenom"><b>Prenom : </b></label>
+      
+      <br>
+      <label for="prenom"><b  th:text="#{LabelPrenom}">Prenom : </b></label>
       <input type="text" placeholder="Prenom ..." name="prenom" required th:field="*{prenom}">
 
-   <br> 
-      <label for="sexe"><b>Sexe : </b></label>
+      <br> 
+     <label for="sexe"><b th:text="#{LabelSexe}">Sexe : </b></label>
       <input type="text" placeholder="sexe ..." name="sexe" th:field="*{sexe}"  required>
-   <br>
-      <label for="date"><b>Date Naissance : </b></label>
+      
+      <br>
+      <label for="date"><b th:text="#{LabelDateN}">Date Naissance : </b></label>
       <input type="date" placeholder="19/02/1996 .." name="date" th:field="*{dateNaissance}"  required >
+      
       <br>
-      <label for="num"><b>Num Tel : </b></label>
+       <label for="num"><b th:text="#{LabelNum}">Num Tel : </b></label>
       <input type="tel" placeholder="0560 ..." name="num" th:field="*{numeroTelephone}" required>
+      
       <br>
-      <label for="Adress"><b>Adress : </b></label>
+      <label for="Adress"><b th:text="#{LabelAdress}">Adress : </b></label>
       <input type="text" placeholder="Alger ..." name="adress" th:field="*{adresse}" required>
   
       <br>
   
       
-        <button type="button" class="cancelbtn">Annuler</button>
-        <button type="submit" class="addbtn">Ajouter</button>
+        <button type="button" class="cancelbtn" th:text="#{ButtonAnnuler}">Annuler</button>
+        <button type="submit" class="addbtn" th:text="#{ButtonAjouter}">Ajouter</button>
       </div>
     </div>
   </form>
+  
 </center>
   <script src="https://kit.fontawesome.com/0cb2cf5836.js" crossorigin="anonymous"></script>
 </body>
