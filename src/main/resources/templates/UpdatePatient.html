@@ -3,7 +3,7 @@
 <head>
 <meta charset="ISO-8859-1">
 
-<title th:text="#{TitreHeadUpdate}">Modifier Patient</title>
+<title>Modifier Patient</title>
 <link rel="stylesheet" type=" text/css" th:href="@{/css/creatpatient.css}"/>
 </head>
 <body>
@@ -11,43 +11,43 @@
    
       
     <div class="cabinet"> 
-         <h4 th:text="#{Titre}"> </h4>
+         <h4>Cabinet de Nesserine Touadi </h4>
     </div>
     <center>
 <form th:object="${p}" th:action="@{'/modifierPatient/'+${p.id}}" method="post" >
 
     <div class="container">
     
-      <h1 th:text="#{TitreUpdate}">Modification d'un patient</h1>
-      <p th:text="#{parUpdate}">Veuillez rectifier les informations de patient</p>
+      <h1>Modification d'un patient</h1>
+      <p>Veuillez rectifier les informations de patient</p>
       <hr>
   
-      <label for="nom"><b th:text="#{LabelNom}">Nom : </b></label>
+      <label for="nom"><b>Nom : </b></label>
       <input type="text" placeholder="Nom ..." name="nom" required th:value="${p.nom}">
   <br>
-      <label for="prenom"><b th:text="#{LabelPrenom}">Prenom : </b></label>
+      <label for="prenom"><b>Prenom : </b></label>
       <input type="text" placeholder="Prenom ..." name="prenom" required th:value="${p.prenom}">
 
    <br> 
-      <label for="sexe"><b th:text="#{LabelSexe}">Sexe : </b></label>
+      <label for="sexe"><b>Sexe : </b></label>
       <input type="text" placeholder="sexe ..." name="sexe" th:value="${p.sexe}"  required>
    <br>
-      <label for="date"><b th:text="#{LabelDateN}">Date Naissance : </b></label>
+      <label for="date"><b>Date Naissance : </b></label>
       <input type="date" placeholder="19/02/1996 .." name="dateNaissance" th:value="${p.dateNaissance}"  required >
       <br>
-      <label for="num"><b th:text="#{LabelNum}">Num Tel : </b></label>
+      <label for="num"><b>Num Tel : </b></label>
       <input type="tel" placeholder="0560 ..." name="numeroTelephone" th:value="${p.numeroTelephone}" required>
       <br>
-      <label for="Adress"><b th:text="#{LabelAdress}">Adress : </b></label>
+      <label for="Adress"><b>Adress : </b></label>
       <input type="text" placeholder="Alger ..." name="adresse" th:value="${p.adresse}" required>
   
       <br>
   
       
-        <button type="button" class="cancelbtn" th:text="#{ButtonAnnuler}">Annuler</button>
+        <button type="button" class="cancelbtn">Annuler</button>
     
         
-        <button type="submit" class="addbtn" th:text="#{ButtonModif}">Modifier</button>
+        <button type="submit" class="addbtn">Modifier</button>
         
       </div>
     </div>

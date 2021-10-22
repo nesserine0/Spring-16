@@ -30,13 +30,12 @@ import dz.ibnrochd.master14.dao.TraitementRepository;
 import dz.ibnrochd.master14.model.Consultation;
 import dz.ibnrochd.master14.model.Patient;
 import dz.ibnrochd.master14.model.Traitement;
-import others.UrlLocaleInterceptor;
-import others.UrlLocaleResolver;
 
-@EnableWebMvc
+
+
 @Configuration
 @SpringBootApplication
-public class Sb002Application implements  CommandLineRunner , WebMvcConfigurer {
+public class Sb002Application implements  CommandLineRunner  {
 	
 	// TODO : déclarer les autres repository de la même façon que PatientRepository
 	
@@ -107,40 +106,6 @@ public class Sb002Application implements  CommandLineRunner , WebMvcConfigurer {
 	
 
 
-	@Bean
-	public LocaleResolver localeResolver() {
-	    SessionLocaleResolver slr = new SessionLocaleResolver();
-	    slr.setDefaultLocale(Locale.FRENCH);
-	    return slr;
-	}
-	@Bean
-	public LocaleChangeInterceptor localeChangeInterceptor() {
-	    LocaleChangeInterceptor lci = new LocaleChangeInterceptor(); 
-	    lci.setParamName("lang");
-	    return lci;
-	}
-	
-
-	
-	public void addInterceptors(InterceptorRegistry registry) {
-	    registry.addInterceptor(localeChangeInterceptor());
-	    
-	}
-	
-	//render CSS and images (path changes so we have to fetch in the right place)
-	public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/css/**").addResourceLocations("classpath:/static/css/");
-        registry.addResourceHandler("/images/**").addResourceLocations("classpath:/static/images/");
-
-    }
-	
-	@Bean  
-	public ResourceBundleMessageSource messageSource()  {  
-	    ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();  
-	 // Read messages_xxx.properties file.
-	    messageSource.setBasename("messages");  
-	    return messageSource;  
-	}
 	
 
 }

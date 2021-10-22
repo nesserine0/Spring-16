@@ -2,31 +2,24 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<title th:text="#{TitreHeadIndex}">List des Patient</title>
+<title>List des Patient</title>
 <link rel="stylesheet" type=" text/css" th:href="@{/css/style.css}"/>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
 
-      <div style="text-align: right;padding:5px;margin:5px 0px;background:#44D5E1;">
-         <a th:href="@{/?lang=en}" th:text="#{enLang}">English</a>
-         &nbsp;|&nbsp;
-         <a th:href="@{/?lang=fr}" th:text="#{frLang}">French</a>
-         &nbsp;|&nbsp;
-         <a th:href="@{/?lang=ar}" th:text="#{arLang}">Arabic</a>
-      </div>
 
 <div class="cabinet"> 
-        <h4 th:text="#{Titre}"> </h4>
+          <h4>Cabinet de Nesserine Touadi </h4>
     </div>
-<h3 th:text="#{TitreList}"> <i class="fas fa-user-injured"></i>   </h3>
+<h3> <i class="fas fa-user-injured"></i> Liste des Patients   </h3>
 
  
-    <h5><i class="fas fa-user-plus"></i>  <a th:text="#{creer}" href="CreatPatient"></a> </h5>
+    <h5><i class="fas fa-user-plus"></i>  <a href="CreatPatient">Creer un nouveau patient</a> </h5>
 
  <table>
  
- <tr> <th th:text="#{nom}"></th> <th th:text="#{prenom}"></th>  <th th:text="#{dateN}"></th> <th th:text="#{num}"></th> <th th:text="#{adress}"> </th> <th th:text="#{consulter}"> </th> <th colspan="2" th:text="#{action}"> </th> </tr>
+ <tr> <th>Nom</th> <th>Prenom</th>  <th>Date Naissance</th> <th>Num Tel</th> <th>Adresse </th> <th>Consulter</th> <th colspan="2">Action   </th> </tr>
 
  
  <tr th:each ="t : ${liste}">

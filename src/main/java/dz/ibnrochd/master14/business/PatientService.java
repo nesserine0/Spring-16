@@ -25,7 +25,11 @@ public class PatientService implements IPatientService{
 	@Override
 	public void creerPatient(Patient patient) {
 		// TODO Auto-generated method stub
-		patientRepository.save(patient);
+		if (patient.getAge()>18) {
+			patientRepository.save(patient);
+			
+		}else throw new IllegalArgumentException("Age is < 18 ");
+		
 	}
 
 	@Override
@@ -40,6 +44,7 @@ public class PatientService implements IPatientService{
 	public void updatePatient(Long id, Patient patient) {
 		// TODO Auto-generated method stub
 		
+		if (patient.getAge()>18) {
 		 Patient p;
 		 
 			Optional <Patient> optionalEntity = patientRepository.findById(id);
@@ -59,6 +64,7 @@ public class PatientService implements IPatientService{
 			
 			else System.out.print("patient est null");	
 			
+		}else throw new IllegalArgumentException("Age is < 18 ");
 		
 	}
 

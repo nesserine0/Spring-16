@@ -1,15 +1,22 @@
 package dz.ibnrochd.master14.view;
 
+import java.io.IOException;
+import java.net.URI;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.boot.web.servlet.error.ErrorController;
 import org.springframework.context.MessageSource;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.WebDataBinder;
@@ -18,6 +25,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.context.request.WebRequest;
 
 import dz.ibnrochd.master14.business.IConsultationService;
@@ -53,8 +61,7 @@ public class MyController implements ErrorController {
 	   @RequestMapping(value = "/",method = RequestMethod.GET)
 	public String index(Model model) {
 
-
-		model.addAttribute("liste", iPatientService.listeDesPatients());	
+       model.addAttribute("liste", iPatientService.listeDesPatients());	
 		return "ListView"; 
 		
 	}
@@ -103,29 +110,54 @@ public class MyController implements ErrorController {
 	
 	//traitement 
 	
+	
 	@RequestMapping(value = { "/ajouterPatient" },method = RequestMethod.POST)
-	public String addPatient(Model model, @ModelAttribute ("patient") Patient p) {
+	public ResponseEntity<Object> addPatient(Model model, @ModelAttribute ("patient") Patient p){
+
 		
 		try {
 			iPatientService.creerPatient(p);
-		} catch (Exception e) {
-			System.out.println(e);
-			 return  "/error";
 		}
-		return "redirect:/";
+		catch (Exception e) {
+			
+            if(e instanceof IllegalArgumentException) return new ResponseEntity<>("",HttpStatus.BAD_REQUEST);
+
+             else {                
+
+            	System.out.println(e);
+            	return ResponseEntity.ok().body("/error");
+   					 
+            }
+      }
+		 String url="/";
+		 
+		HttpHeaders headers = new HttpHeaders();
+		headers.setLocation(URI.create(url));
+		return new ResponseEntity<>(headers, HttpStatus.MOVED_PERMANENTLY);
+	
 	}
 	
 
 	@RequestMapping(value = { "/modifierPatient/{id}"},method = RequestMethod.POST)
-	public String modifierPatient(@ModelAttribute ("p") Patient p,@PathVariable Long id) {
+	public ResponseEntity<Object>  modifierPatient(@ModelAttribute ("p") Patient p,@PathVariable Long id) {
 		
 		try {
 			iPatientService.updatePatient(id,p);
 		} catch (Exception e) {
-			System.out.println(e);
-			 return  "/error";
-		}
-		return "redirect:/";
+			 if(e instanceof IllegalArgumentException) return new ResponseEntity<>("",HttpStatus.BAD_REQUEST);
+
+             else {                
+
+            	System.out.println(e);
+            	return ResponseEntity.ok().body("/error");
+   					 
+            }
+      }
+		 String url="/";
+		 
+		HttpHeaders headers = new HttpHeaders();
+		headers.setLocation(URI.create(url));
+		return new ResponseEntity<>(headers, HttpStatus.MOVED_PERMANENTLY);
 	}
 	
 	
@@ -165,6 +197,7 @@ public class MyController implements ErrorController {
 	    //to parse string type sent from html into a date type 
 	    @InitBinder
 	public void initBinder(WebDataBinder binder, WebRequest request) {
+
 	        //convert the date Note that the conversion here should always be in the same format as the string passed in, e.g. 2015-9-9 should be yyyy-MM-dd
 	        DateFormat dateFormat=new SimpleDateFormat("yyyy-MM-dd");
 	        binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, true));// CustomDateEditor is a custom date editor

@@ -1,6 +1,7 @@
 package dz.ibnrochd.master14.model;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -155,4 +156,10 @@ public class Patient implements Serializable {
 		this.rendezVous = rendezVous;
 	}
 
+	
+	public int getAge() {
+		  LocalDate current_date = LocalDate.now();
+		  
+		return  current_date.getYear()-(this.getDateNaissance().getYear()+1900);
+	}
 }
