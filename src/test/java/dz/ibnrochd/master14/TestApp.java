@@ -15,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.boot.test.system.OutputCaptureExtension;
 import org.springframework.test.web.servlet.MockMvc;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -45,14 +46,16 @@ class TestApp {
 		
 		 objectMapper = new ObjectMapper();
 		
-		 Date date = new GregorianCalendar(2005, Calendar.FEBRUARY, 11).getTime();
+		 Date date = new GregorianCalendar(2010, Calendar.FEBRUARY, 11).getTime();
 
 		   
 		Patient patient=new Patient ("TestNess", "TestPrenom","f", date, "058947000","alger");
 		
+		System.out.println( "age de ce patient est "+patient.getAge());
 		
 		mockMvc.perform(post("/ajouterPatient").contentType("application/json")
 				                               .content(objectMapper.writeValueAsString(patient)))
+		                                       .andExpect(status().isOk())
 		                                      ;
 				
 				

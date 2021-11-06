@@ -133,7 +133,7 @@ public class MyController implements ErrorController {
 		 
 		HttpHeaders headers = new HttpHeaders();
 		headers.setLocation(URI.create(url));
-		return new ResponseEntity<>(headers, HttpStatus.MOVED_PERMANENTLY);
+		return new ResponseEntity<>(headers, HttpStatus.OK);
 	
 	}
 	

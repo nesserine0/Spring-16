@@ -26,9 +26,14 @@ public class PatientService implements IPatientService{
 	public void creerPatient(Patient patient) {
 		// TODO Auto-generated method stub
 		if (patient.getAge()>18) {
+			System.out.println("am about to save the patient");
 			patientRepository.save(patient);
 			
-		}else throw new IllegalArgumentException("Age is < 18 ");
+		}else {
+			System.out.println("am about to throw an exception");
+
+			throw new IllegalArgumentException("Age is < 18 ");
+		}
 		
 	}
 
