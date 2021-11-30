@@ -1,5 +1,6 @@
 package dz.ibnrochd.master14;
 
+import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -46,12 +47,13 @@ class TestApp {
 		
 		 objectMapper = new ObjectMapper();
 		
-		 Date date = new GregorianCalendar(2010, Calendar.FEBRUARY, 11).getTime();
+		 Date date = new GregorianCalendar(2006, Calendar.FEBRUARY, 11).getTime();
 
 		   
 		Patient patient=new Patient ("TestNess", "TestPrenom","f", date, "058947000","alger");
+		System.out.println("age de ce patient est " + patient.getAge());
 		
-		System.out.println( "age de ce patient est "+patient.getAge());
+		assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(() -> { iPatientService.creerPatient(patient);}).withMessage("Age is < 18 ");
 		
 		mockMvc.perform(post("/ajouterPatient").contentType("application/json")
 				                               .content(objectMapper.writeValueAsString(patient)))

@@ -117,25 +117,24 @@ public class MyController implements ErrorController {
 		
 		try {
 			iPatientService.creerPatient(p);
+			HttpHeaders headers = new HttpHeaders();
+			headers.setLocation(URI.create("/"));
+			return new ResponseEntity<>(headers, HttpStatus.OK);
 		}
-		catch (Exception e) {
+		catch (IllegalArgumentException e) {
 			
-            if(e instanceof IllegalArgumentException) return new ResponseEntity<>("",HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>("",HttpStatus.BAD_REQUEST);
 
-             else {                
-
-            	System.out.println(e);
-            	return ResponseEntity.ok().body("/error");
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			return ResponseEntity.ok().body("/error");
+			             
    					 
             }
       }
-		 String url="/";
-		 
-		HttpHeaders headers = new HttpHeaders();
-		headers.setLocation(URI.create(url));
-		return new ResponseEntity<>(headers, HttpStatus.OK);
+		
 	
-	}
+	
 	
 
 	@RequestMapping(value = { "/modifierPatient/{id}"},method = RequestMethod.POST)
